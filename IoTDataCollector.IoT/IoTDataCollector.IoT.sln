@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35027.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IoTDataCollector.IoT", "IoTDataCollector.API\IoTDataCollector.IoT.csproj", "{EC5C38E3-DA7A-453D-82C5-B900B5C53C4C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EC5C38E3-DA7A-453D-82C5-B900B5C53C4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC5C38E3-DA7A-453D-82C5-B900B5C53C4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC5C38E3-DA7A-453D-82C5-B900B5C53C4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC5C38E3-DA7A-453D-82C5-B900B5C53C4C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F60533E9-4824-4EDD-A5FE-461759E19B46}
+	EndGlobalSection
+EndGlobal
