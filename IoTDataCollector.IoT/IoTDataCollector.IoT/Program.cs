@@ -2,6 +2,9 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Concurrent;
+using System.Net.Http;
+using System.Text;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -50,15 +53,31 @@ app.Run();
 async Task ProduceData(CancellationToken token)
 {
     Random random = new Random();
+    using var httpClient = new HttpClient();
     while (!token.IsCancellationRequested)
     {
         var data = new
         {
             DeviceId = deviceId,
             Timestamp = DateTime.UtcNow,
-            Value = random.NextDouble() < 0.8 ? 1 : 0 };
+            Value = random.NextDouble() < 0.8 ? 1 : 0
+        };
 
         dataQueue.Enqueue(data);
+
+        var jsonData = JsonSerializer.Serialize(data);
+        var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
+        try
+        {
+            var response = await httpClient.PostAsync("https://localhost:7083/api/IoTData", content);
+            response.EnsureSuccessStatusCode();
+            Console.WriteLine($"Produced data: {jsonData}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error posting data: {ex.Message}");
+        }
 
         await Task.Delay(1000, token);
     }
